@@ -49,14 +49,10 @@ public class MatchServiceImpl implements MatchService {
 		List<User> filteredUsers = locationServiceApi.getUsers(filters);
 		List<Like> likes = likesService.getAllLikes(userId);
 		List<Dislike> dislikes = dislikesService.getAllDislikes(userId);
-		LOGGER.info("likes : {}", likes);
-		LOGGER.info("dislikes : {}", dislikes);
 		// Filter already liked users
 		filteredUsers = FilterUtils.filterLikedUsers(filteredUsers, likes);
-		LOGGER.info("Filtered after removing likes : {}", filteredUsers);
 		// filter already disliked users
 		filteredUsers = FilterUtils.filterDislikedUsers(filteredUsers, dislikes);
-		LOGGER.info("Filtered after removing dislikes : {}", filteredUsers);
 		return filteredUsers;
 	}
 

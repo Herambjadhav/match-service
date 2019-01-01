@@ -14,12 +14,20 @@ import com.dilmil.model.Match;
 import com.dilmil.model.User;
 import com.dilmil.service.MatchService;
 
+/*
+ * REST API's for Match service
+ */
+
 @RestController
 @RequestMapping("/match")
 public class MatchWebService {
 
 	@Autowired
 	MatchService matchService;
+	
+	/*
+	 * NOT IMPLEMENTED: All API's should validate authorization header to allow or disallow access to api
+	 */
 
 	@GetMapping("/all/{userId}")
 	public List<Match> getMatches(@PathVariable String userId) {

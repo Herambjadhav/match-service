@@ -27,6 +27,7 @@ public class DislikesServiceImpl implements DislikesService {
 			dislike.setUserId(dislike.getUserId().toLowerCase());
 			dislike.setDislikedUserId(dislike.getDislikedUserId().toLowerCase());
 			dislikesRepository.save(dislike);
+			LOGGER.warn("{} Disiked {}", dislike.getUserId(), dislike.getDislikedUserId());
 		} catch (Exception exception) {
 			LOGGER.error("error while saving dislike : {}", exception);
 		}

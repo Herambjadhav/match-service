@@ -13,12 +13,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dilmil.model.Like;
 import com.dilmil.service.LikesService;
 
+/*
+ * REST API's for likes service
+ */
+
 @RestController
 @RequestMapping("/likes")
 public class LikesWebService {
 
 	@Autowired
 	LikesService likesService;
+	
+	/*
+	 * NOT IMPLEMENTED: All API's should validate authorization header to allow or disallow access to api
+	 */
 
 	@GetMapping("/all/{userId}")
 	public List<Like> getAllLikedUsers(@PathVariable String userId) {

@@ -31,12 +31,15 @@ public class LikesServiceImpl implements LikesService {
 			like.setUserId(like.getUserId().toLowerCase());
 			like.setLikedUserId(like.getLikedUserId().toLowerCase());
 			likesRepository.save(like);
+			LOGGER.warn("{} Liked {}", like.getUserId(), like.getLikedUserId());
 			// Check if user is also liked by likedUser
-			Like isLiked = likesRepository.findByUserIdAndLikedUserId(like.getUserId(), like.getLikedUserId());
+			Like isLiked = likesRepository.findByUserIdAndLikedUserId(like.getLikedUserId(), like.getUserId());
+			LOGGER.info("isLikes : {}", isLiked);
 			if (isLiked != null) {
 				// create match
 				Match match = new Match(like.getUserId(), like.getLikedUserId());
 				matchService.saveMatch(match);
+				LOGGER.warn("Match Found bwtween {} and {}", like.getUserId(), like.getLikedUserId());
 			}
 
 		} catch (Exception exception) {

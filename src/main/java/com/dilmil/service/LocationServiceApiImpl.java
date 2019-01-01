@@ -14,6 +14,10 @@ import com.dilmil.util.FilterUtils;
 public class LocationServiceApiImpl implements LocationServiceApi {
 
 	private static final List<User> USER_DATA = new ArrayList<User>();
+	
+	/*
+	 * Static data representing Sample data response from a LocationService
+	 */
 
 	static {
 		LocationData sf = new LocationData("San Francisco", "USA");
@@ -36,6 +40,9 @@ public class LocationServiceApiImpl implements LocationServiceApi {
 
 	@Override
 	public List<User> getUsers(List<Filter> filters) {
+		/*
+		 * STUB Implementation. Should Ideally be calling location-service over REST
+		 */
 		List<User> filteredUsers = USER_DATA;
 		if (filters != null && !filters.isEmpty()) {
 			for (Filter filter : filters) {

@@ -11,8 +11,14 @@ import org.springframework.context.annotation.Configuration;
 
 import com.dilmil.model.Match;
 import com.dilmil.model.Like;
+import com.dilmil.model.Dislike;
+import com.dilmil.repository.DislikesRepository;
 import com.dilmil.repository.LikesRepository;
 import com.dilmil.repository.MatchRepository;
+
+/*
+ * For loading test data
+ */
 
 @Configuration
 public class LoadTestData {
@@ -27,6 +33,18 @@ public class LoadTestData {
 			likes.add(new Like("bob@gmail.com", "alice@gmail.com"));
 			likes.add(new Like("alice@gmail.com", "bob@gmail.com"));
 			likes.forEach(like -> likeRepository.save(like));
+			LOGGER.info("Done!!!");
+		};
+	}
+
+	@Bean
+	CommandLineRunner initDislikeDatabase(DislikesRepository dislikesRepository) {
+		return args -> {
+			LOGGER.info("Loading Dislikes Data...");
+			List<Dislike> dislikes = new ArrayList<>();
+			dislikes.add(new Dislike("alice@gmail.com", "eve@gmail.com"));
+			dislikes.forEach(dislike -> dislikesRepository.save(dislike));
+			LOGGER.info("Done!!!");
 		};
 	}
 
@@ -37,6 +55,7 @@ public class LoadTestData {
 			List<Match> matches = new ArrayList<Match>();
 			matches.add(new Match("bob@gmail.com", "alice@gmail.com"));
 			matches.forEach(match -> matchRepository.save(match));
+			LOGGER.info("Done!!!");
 		};
 	}
 }

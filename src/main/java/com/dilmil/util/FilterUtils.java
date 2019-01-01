@@ -10,6 +10,10 @@ import com.dilmil.model.Dislike;
 import com.dilmil.model.Like;
 import com.dilmil.model.User;
 
+/*
+ * Util's for applying different filters
+ */
+
 public class FilterUtils {
 
 	public static List<User> applyAgeFilter(List<User> filteredUsers, ArrayList<?> values) {
